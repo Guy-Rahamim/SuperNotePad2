@@ -12,7 +12,6 @@ public class MainActivity extends AppCompatActivity
         protected void onCreate(Bundle savedInstanceState)
             {
                 super.onCreate(savedInstanceState);
-                setContentView(R.layout.layout_note_body);
-                getSupportActionBar().hide();
+                setContentView(R.layout.activity_main);
             }
     }
