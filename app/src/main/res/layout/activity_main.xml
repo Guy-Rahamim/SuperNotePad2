@@ -10,6 +10,7 @@
 
     <Button
         android:id="@+id/main_button_add_note"
+
         android:layout_width="57dp"
         android:layout_height="55dp"
         android:background="@drawable/circle_button"
@@ -24,7 +25,9 @@
         app:layout_constraintVertical_bias="0.958" />
 
     <ImageButton
+
         android:id="@+id/main_button_search_open"
+
         android:layout_width="57dp"
         android:layout_height="55dp"
         android:background="@drawable/circle_button"
@@ -38,7 +41,9 @@
         app:srcCompat="@android:drawable/ic_menu_search" />
 
     <ImageButton
+
         android:id="@+id/main_button_tools"
+
         android:background="@drawable/circle_button"
         android:layout_width="57dp"
         android:layout_height="55dp"
@@ -51,6 +56,7 @@
         app:srcCompat="@android:drawable/ic_menu_preferences" />
 
     <LinearLayout
+
         android:id="@+id/main_view_linearLayout"
         android:layout_width="408dp"
         android:layout_height="553dp"
@@ -66,6 +72,7 @@
     </LinearLayout>
 
     <AutoCompleteTextView
+
         android:id="@+id/main_button_search"
         android:layout_width="203dp"
         android:layout_height="45dp"
