@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/layout_note_body_title"
+        android:id="@+id/layout_note_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/switch_toggle_checkbox"
         android:layout_width="161dp"
         android:layout_height="61dp"
         android:layout_marginStart="16dp"
