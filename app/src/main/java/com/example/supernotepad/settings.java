@@ -1,37 +1,97 @@
 package com.example.supernotepad;
 
+//import class
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
-
+//setting class
 public class settings extends AppCompatActivity {
 
+    //Statement of variables
     Button buttonBack;
-    TextView settingsTitle;
+    Button buttonSortByChoice;
+    Button buttonTextSizeChoice;
     Switch switchDarkMode;
     Switch switchEnterSave;
+    TextView settingsTitle;
     TextView textViewSortBy;
-    Button buttonSortByChoice;
     TextView textViewTextSize;
-    Button buttonTextSizeChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initElements();
+        initElements();//Initializing elements
     }
 
-    public void initElements(){
-        buttonBack = (Button)findViewById(R.id.button_back2);
-        settingsTitle = (TextView)findViewById(R.id.textView_settings_title);
-        switchDarkMode = (Switch)findViewById(R.id.switch_darkMode);
-        switchEnterSave = (Switch)findViewById(R.id.switch_enterSave);
-        textViewSortBy=(TextView)findViewById(R.id.textView_sortBy);
-        buttonSortByChoice = (Button)findViewById(R.id.button_sortByChoice);
-        textViewTextSize = (TextView)findViewById(R.id.textView_textSize);
-        buttonTextSizeChoice = (Button)findViewById(R.id.button_textSizeChoice);
+    //Initializing elements
+    public void initElements() {
+
+        //button initialization.
+        buttonBack = (Button) findViewById(R.id.button_back2);
+        buttonSortByChoice = (Button) findViewById(R.id.button_sortByChoice);
+        buttonTextSizeChoice = (Button) findViewById(R.id.button_textSizeChoice);
+
+        //switch initialization.
+        switchDarkMode = (Switch) findViewById(R.id.switch_darkMode);
+        switchEnterSave = (Switch) findViewById(R.id.switch_enterSave);
+
+        //text view initialization.
+        settingsTitle = (TextView) findViewById(R.id.textView_settings_title);
+        textViewSortBy = (TextView) findViewById(R.id.textView_sortBy);
+        textViewTextSize = (TextView) findViewById(R.id.textView_textSize);
+
+        //initalizing click listener
+        initClickListeners();
+    }
+
+    //initalizing click listeners
+    public void initClickListeners() {
+
+        //create click listener for buttonBack
+        View.OnClickListener buttonBackListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //implementation.
+            }
+        };
+        //create click listener for buttonSortByChoice
+        View.OnClickListener buttonSortByChoiceListener = new View.OnClickListener(){
+            public void onClick(View V) {//implementation
+            }
+        };
+        //create click listener for buttonTextSizeChoice.
+        View.OnClickListener butttonTextSizeChoiceListener = new View.OnClickListener(){
+            public void onClick(View V){//implementation
+            }
+};
+        //create click listener for switchDarkMode
+        View.OnClickListener switchDarkModeListener = new View.OnClickListener(){
+            public void onClick(View V){
+                //implementation
+            }
+        };
+        //create click listener for switchEnterSave
+        View.OnClickListener switchEnterSaveListener = new View.OnClickListener(){
+            public void onClick(View V){
+                //implementation
+            }
+        };
+
+        //setting buttonBack to listen to "buttonBackListener".
+        buttonBack.setOnClickListener(buttonBackListener);
+        //setting buttonSortByChoice to listen to "buttonSortByChoiceListener".
+        buttonSortByChoice.setOnClickListener(buttonSortByChoiceListener);
+        //setting buttonTextSizeChoice to listen to "butttonTextSizeChoiceListener".
+        buttonTextSizeChoice.setOnClickListener(butttonTextSizeChoiceListener);
+        //setting switchDarkMode to listen to "switchDarkModeListener"
+        switchDarkMode.setOnClickListener(switchDarkModeListener);
+        //setting switchEnterSave to listener to "switchEnterSaveListener"
+        switchEnterSave.setOnClickListener(switchEnterSaveListener);
     }
 }
+
+
+
