@@ -20,6 +20,7 @@ public class NoteBody extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout_note_body);
         initElements();//initializing elements
     }
 
@@ -46,6 +47,8 @@ public class NoteBody extends AppCompatActivity {
         View.OnClickListener backButtonListener = new View.OnClickListener(){
             public void onClick(View V){
           //implementation
+
+              finish();
             }
         };
         //create click listener for toggleCheckbox

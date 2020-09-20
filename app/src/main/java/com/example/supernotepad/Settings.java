@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 //setting class
-public class settings extends AppCompatActivity {
+public class Settings extends AppCompatActivity {
 
     //Statement of variables
     Button buttonBack;
@@ -23,6 +23,7 @@ public class settings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout_settings);
         initElements();//Initializing elements
     }
 
@@ -55,6 +56,7 @@ public class settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //implementation.
+                finish();
             }
         };
         //create click listener for buttonSortByChoice
