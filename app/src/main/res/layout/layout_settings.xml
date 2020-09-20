@@ -23,16 +23,17 @@
         android:layout_width="142dp"
         android:layout_height="46dp"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="132dp"
         android:layout_marginEnd="252dp"
         android:bufferType="normal"
         android:buttonTint="#272323"
-        android:text="Dark mode"
+        android:text="@string/settings_toggle_dark_mode"
         android:textColor="#F1EAEA"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_settings_title" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_settings_title"
@@ -40,7 +41,7 @@
         android:layout_height="39dp"
         android:layout_marginStart="4dp"
         android:background="#4A4848"
-        android:text="Settings"
+        android:text="@string/settings_title"
         android:textColor="@color/noteTextColor"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -52,53 +53,56 @@
         android:layout_width="0dp"
         android:layout_height="62dp"
         android:layout_marginStart="19dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="212dp"
         android:layout_marginEnd="244dp"
-        android:text="Enter is save"
+        android:text="@string/settings_enter_is_save"
         android:textColor="#F1EAEA"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch_darkMode" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_sortBy"
         android:layout_width="76dp"
         android:layout_height="43dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="Sort by"
+        android:layout_marginTop="316dp"
+        android:text="@string/settings_sort_by"
         android:textColor="#F1EAEA"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch_enterSave" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_sortByChoice"
         android:layout_width="122dp"
         android:layout_height="43dp"
-        android:text="choice"
-        app:layout_constraintStart_toEndOf="@+id/textView_sortBy"
-        tools:layout_editor_absoluteY="320dp" />
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="316dp"
+        android:text="@string/settings_button_choice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_textSize"
         android:layout_width="94dp"
         android:layout_height="52dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="Text size"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="396dp"
+        android:text="@string/settings_text_size"
         android:textColor="#F1EAEA"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_sortBy" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_textSizeChoice"
         android:layout_width="106dp"
         android:layout_height="54dp"
-        android:text="choice"
+        android:layout_marginStart="8dp"
+        android:text="@string/settings_button_choice"
         app:layout_constraintStart_toEndOf="@+id/textView_textSize"
-        tools:layout_editor_absoluteY="399dp" />
+        tools:layout_editor_absoluteY="396dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
