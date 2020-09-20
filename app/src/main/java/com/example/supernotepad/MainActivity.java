@@ -2,6 +2,7 @@ package com.example.supernotepad;
 //import class
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_main);
                 initElements();//initializing elements
+
     }
 
         //Initialization an object of action
@@ -41,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
             //create click listener for mainButtonTools
             View.OnClickListener mainButtonToolsListener = new View.OnClickListener(){
-                public void onClick(View V){ //implementation}
+                public void onClick(View V){                    //implementation}
+                   launchActivitySettings();
                 }
             };
             //create click listener for mainButtonSearchOpen
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             //create click listener for mainButtonAddNote
             View.OnClickListener mainButtonAddNoteListener = new View.OnClickListener(){
                 public void onClick(View V){//implementation}
+                  launchActivityNoteBody();
                 }
             };
 
@@ -62,4 +66,14 @@ public class MainActivity extends AppCompatActivity {
             //setting listener to mainButtonAddNote TO " mainButtonAddNoteListener"
             mainButtonAddNote.setOnClickListener(mainButtonAddNoteListener);
     }
+
+        private void launchActivityNoteBody(){
+            Intent intentNoteBody = new Intent(this, NoteBody.class);
+            startActivity(intentNoteBody);
+        }
+
+        private void launchActivitySettings(){
+            Intent intentSettings = new Intent(this, Settings.class);
+            startActivity(intentSettings);
+        }
 }
