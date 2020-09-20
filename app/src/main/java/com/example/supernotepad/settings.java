@@ -63,10 +63,10 @@ public class settings extends AppCompatActivity {
             }
         };
         //create click listener for buttonTextSizeChoice.
-        View.OnClickListener butttonTextSizeChoiceListener = new View.OnClickListener(){
+        View.OnClickListener buttonTextSizeChoiceListener = new View.OnClickListener(){
             public void onClick(View V){//implementation
             }
-};
+        };
         //create click listener for switchDarkMode
         View.OnClickListener switchDarkModeListener = new View.OnClickListener(){
             public void onClick(View V){
@@ -84,8 +84,8 @@ public class settings extends AppCompatActivity {
         buttonBack.setOnClickListener(buttonBackListener);
         //setting buttonSortByChoice to listen to "buttonSortByChoiceListener".
         buttonSortByChoice.setOnClickListener(buttonSortByChoiceListener);
-        //setting buttonTextSizeChoice to listen to "butttonTextSizeChoiceListener".
-        buttonTextSizeChoice.setOnClickListener(butttonTextSizeChoiceListener);
+        //setting buttonTextSizeChoice to listen to "buttonTextSizeChoiceListener".
+        buttonTextSizeChoice.setOnClickListener(buttonTextSizeChoiceListener);
         //setting switchDarkMode to listen to "switchDarkModeListener"
         switchDarkMode.setOnClickListener(switchDarkModeListener);
         //setting switchEnterSave to listener to "switchEnterSaveListener"
