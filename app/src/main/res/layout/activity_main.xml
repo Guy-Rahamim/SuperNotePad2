@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2E2D2D"
+    android:background="@color/background"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/main_button_add_note"
-
         android:layout_width="57dp"
         android:layout_height="55dp"
         android:background="@drawable/circle_button"

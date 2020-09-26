@@ -37,8 +37,8 @@
 
     <TextView
         android:id="@+id/textView_settings_title"
-        android:layout_width="692dp"
-        android:layout_height="39dp"
+        android:layout_width="284dp"
+        android:layout_height="45dp"
         android:layout_marginStart="4dp"
         android:background="#4A4848"
         android:text="@string/settings_title"
@@ -101,8 +101,9 @@
         android:id="@+id/button_textSizeChoice"
         android:layout_width="106dp"
         android:layout_height="54dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginBottom="308dp"
         android:text="@string/settings_button_choice"
-        app:layout_constraintStart_toEndOf="@+id/textView_textSize"
-        tools:layout_editor_absoluteY="396dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
