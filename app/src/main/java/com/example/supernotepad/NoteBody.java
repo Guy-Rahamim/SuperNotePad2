@@ -47,8 +47,7 @@ public class NoteBody extends AppCompatActivity {
         View.OnClickListener backButtonListener = new View.OnClickListener(){
             public void onClick(View V){
           //implementation
-
-              finish();
+              finish();//Go back
             }
         };
         //create click listener for toggleCheckbox
