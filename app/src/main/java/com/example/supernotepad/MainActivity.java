@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
             //create click listener for mainButtonTools
             View.OnClickListener mainButtonToolsListener = new View.OnClickListener(){
-                public void onClick(View V){                    //implementation}
-                   launchActivitySettings();
+                public void onClick(View V){ //implementation}
+                   launchActivitySettings();//launch Activity Settings
                 }
             };
             //create click listener for mainButtonSearchOpen
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             //create click listener for mainButtonAddNote
             View.OnClickListener mainButtonAddNoteListener = new View.OnClickListener(){
                 public void onClick(View V){//implementation}
-                  launchActivityNoteBody();
+                  launchActivityNoteBody();//launch Activity Note Body
                 }
             };
 
@@ -66,12 +66,13 @@ public class MainActivity extends AppCompatActivity {
             //setting listener to mainButtonAddNote TO " mainButtonAddNoteListener"
             mainButtonAddNote.setOnClickListener(mainButtonAddNoteListener);
     }
-
+        //launch Activity Note Body
         private void launchActivityNoteBody(){
             Intent intentNoteBody = new Intent(this, NoteBody.class);
             startActivity(intentNoteBody);
         }
 
+        //launch Activity Settings
         private void launchActivitySettings(){
             Intent intentSettings = new Intent(this, Settings.class);
             startActivity(intentSettings);

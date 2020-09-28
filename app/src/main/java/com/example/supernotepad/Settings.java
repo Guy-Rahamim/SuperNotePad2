@@ -44,19 +44,18 @@ public class Settings extends AppCompatActivity {
         textViewSortBy = (TextView) findViewById(R.id.textView_sortBy);
         textViewTextSize = (TextView) findViewById(R.id.textView_textSize);
 
-        //initalizing click listener
+        //initializing click listener
         initClickListeners();
     }
 
-    //initalizing click listeners
+    //initializing click listeners
     public void initClickListeners() {
 
         //create click listener for buttonBack
         View.OnClickListener buttonBackListener = new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //implementation.
-                finish();
+            public void onClick(View v) { //implementation.
+                finish();//Go back
             }
         };
         //create click listener for buttonSortByChoice
