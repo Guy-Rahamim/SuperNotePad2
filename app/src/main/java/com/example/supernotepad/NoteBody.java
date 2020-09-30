@@ -59,6 +59,7 @@ public class NoteBody extends AppCompatActivity {
 
         //setting listener to backButton to "backButtonListener"
         backButton.setOnClickListener(backButtonListener);
+
         //setting listen to toggleCheckbox to "toggleCheckboxListener"
         toggleCheckbox.setOnClickListener(toggleCheckboxListener);
     }
