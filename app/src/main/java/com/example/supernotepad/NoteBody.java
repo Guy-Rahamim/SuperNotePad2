@@ -2,6 +2,8 @@ package com.example.supernotepad;
 
 //import class
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +20,7 @@ public class NoteBody extends AppCompatActivity {
 
     //Statement of variables
     Button backButton;
-    Switch toggleCheckbox;
+    SwitchCompat toggleCheckbox;
     EditText noteTitle;
     EditText noteBody;
     Button saveButton;
@@ -38,7 +40,7 @@ public class NoteBody extends AppCompatActivity {
         saveButton= (Button)findViewById(R.id.layout_note_save);
 
         //switch initialization.
-        toggleCheckbox = (Switch)findViewById(R.id.switch_toggle_checkbox);
+        toggleCheckbox = (SwitchCompat)findViewById(R.id.switch_toggle_checkbox);
 
         //edit text initialization.
         noteTitle = (EditText)findViewById(R.id.layout_note_title);
