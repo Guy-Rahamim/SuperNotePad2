@@ -9,7 +9,7 @@
 
     <EditText
         android:id="@+id/layout_note_body"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="530dp"
         android:gravity="top"
         android:hint="@string/note_text_body"

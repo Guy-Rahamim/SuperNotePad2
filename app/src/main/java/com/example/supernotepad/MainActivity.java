@@ -4,17 +4,27 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
@@ -27,10 +37,13 @@ import permissions.dispatcher.RuntimePermissions;
 public class MainActivity extends AppCompatActivity
     {
         //Statement of variables
+        public static HashMap<String, String> map= new HashMap<String,String>();
         ImageButton mainButtonTools;
         ImageButton mainButtonSearchOpen;
         Button mainButtonAddNote;
         AutoCompleteTextView mainButtonSearch;
+
+        TextView noteView;
 
         @Override
         protected void onCreate(Bundle savedInstanceState)
@@ -38,6 +51,13 @@ public class MainActivity extends AppCompatActivity
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_main);
                 initElements();//initializing elements
+
+                //testing for note view
+                noteView = (TextView) findViewById(R.id.main_note_view);
+                noteView.setVisibility(View.INVISIBLE);
+                instantiateMap();
+                displayMap();
+
             }
 
         //Initialization an object of action
@@ -111,6 +131,65 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intentNoteBody);
             }
 
+        private void launchActivitySettings()
+            {
+                Intent intentSettings = new Intent(this, Settings.class);
+                startActivity(intentSettings);
+            }
+        
+        private   void instantiateMap()
+            {
+                //instantiate files, check if its a directory
+                //if it is, create a file array and instantiate it.
+
+                //create a FileInputStream.
+                // instantiate a new InputStreamReader with the FileInputStream.
+                //instantiate a new BufferedReader with the InputStreamReader.
+                FileInputStream fileReader= null;
+                InputStreamReader streamReader=null;
+                BufferedReader bufferedReader = null;
+
+                File dir = getFilesDir();
+
+                if (dir.isDirectory()){
+                    String noteBody="";
+                    String currentLine="";
+
+                    try{
+                        File[] files= dir.listFiles();
+
+                        for (File file:files){
+                            fileReader= new FileInputStream(file);
+                            streamReader = new InputStreamReader(fileReader);
+                            bufferedReader = new BufferedReader(streamReader);
+
+                            while ((currentLine = bufferedReader.readLine()) !=null){
+                                noteBody+=currentLine+"\n";
+                            }
+
+                            map.put(file.getName(),noteBody);
+                        }
+                    }
+
+                    catch(IOException e){
+                        Toast.makeText(this, "IO caught in instantiate", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+
+
+            }
+
+        public void displayMap(){
+            if (!map.isEmpty()) {
+                    String text = map.get("hello");
+                    noteView.setVisibility(View.VISIBLE);
+                    noteView.setTextColor(Color.BLACK);
+                    noteView.setText(text);
+                }
+
+            }
 
         //******************Handaling Storage Permission*****************//
 
@@ -180,9 +259,7 @@ public class MainActivity extends AppCompatActivity
                 MainActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
             }
 
-        private void launchActivitySettings()
-            {
-                Intent intentSettings = new Intent(this, Settings.class);
-                startActivity(intentSettings);
-            }
+
+
+
     }
