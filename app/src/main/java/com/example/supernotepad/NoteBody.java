@@ -20,6 +20,7 @@ import java.io.IOException;
 //NoteBode class
 public class NoteBody extends AppCompatActivity {
 
+    public static int textSize = 25;
     //Statement of variables
     Button backButton;
     SwitchCompat toggleCheckbox;
@@ -32,6 +33,7 @@ public class NoteBody extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_note_body);
         initElements();//initializing elements
+        setNoteBodySize(); // define the text size of notebody
     }
 
     //Initialization an object of action
@@ -128,4 +130,8 @@ public class NoteBody extends AppCompatActivity {
             }
         }//end finally
     }//end saveNote function
+
+    public void setNoteBodySize(){
+        noteBody.setTextSize(textSize);
+    }
 }

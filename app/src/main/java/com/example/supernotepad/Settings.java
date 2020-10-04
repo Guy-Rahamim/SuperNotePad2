@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.TextView;
 //setting class
 public class Settings extends AppCompatActivity {
@@ -18,6 +17,9 @@ public class Settings extends AppCompatActivity {
     Button buttonBack;
     Button buttonSortByChoice;
     Button buttonTextSizeChoice;
+    Button buttonSmallTextSize;
+    Button buttonMediumTextSize;
+    Button buttonLargeTextSize;
     SwitchCompat switchDarkMode;
     SwitchCompat switchEnterSave;
     TextView settingsTitle;
@@ -25,6 +27,10 @@ public class Settings extends AppCompatActivity {
     TextView textViewTextSize;
 
     boolean isNightMode=false;
+
+
+    // define size for Text in NoteBody
+    int smallSize = 10, mediumSize = 20, largeSize = 30;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,9 @@ public class Settings extends AppCompatActivity {
         buttonBack = (Button) findViewById(R.id.button_back2);
         buttonSortByChoice = (Button) findViewById(R.id.button_sortByChoice);
         buttonTextSizeChoice = (Button) findViewById(R.id.button_textSizeChoice);
+        buttonSmallTextSize = (Button) findViewById(R.id.button_textSmallSize);
+        buttonMediumTextSize = (Button) findViewById(R.id.button_textMediumSize);
+        buttonLargeTextSize = (Button) findViewById(R.id.button_textLargeSize);
 
         //switch initialization.
         switchDarkMode = (SwitchCompat) findViewById(R.id.switch_darkMode);
@@ -50,8 +59,17 @@ public class Settings extends AppCompatActivity {
         textViewSortBy = (TextView) findViewById(R.id.textView_sortBy);
         textViewTextSize = (TextView) findViewById(R.id.textView_textSize);
 
+        //Default invisibility of button text size view
+        setInvisibilityTextSizeButton();
+
         //initializing click listener
         initClickListeners();
+
+
+
+
+
+
     }
 
     //initializing click listeners
@@ -69,11 +87,46 @@ public class Settings extends AppCompatActivity {
             public void onClick(View V) {//implementation
             }
         };
+
         //create click listener for buttonTextSizeChoice.
         View.OnClickListener buttonTextSizeChoiceListener = new View.OnClickListener(){
-            public void onClick(View V){//implementation
+            public void onClick(View V){
+                buttonSmallTextSize.setVisibility(View.VISIBLE);
+                buttonMediumTextSize.setVisibility(View.VISIBLE);
+                buttonLargeTextSize.setVisibility(View.VISIBLE);
+
+
             }
         };
+
+        //change the text size in NoteBody to small
+        buttonSmallTextSize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NoteBody.textSize = smallSize;
+                setInvisibilityTextSizeButton();
+            }
+        });
+
+        //change the text size in NoteBody to medium
+        buttonMediumTextSize.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                NoteBody.textSize = mediumSize;
+                setInvisibilityTextSizeButton();
+            }
+        });
+
+        //change the text size in NoteBody to large
+        buttonLargeTextSize.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                NoteBody.textSize = largeSize;
+                setInvisibilityTextSizeButton();
+            }
+        });
+
+
         //create Checked Change listener for switchDarkMode
     CompoundButton.OnCheckedChangeListener switchDarkModeListener = new CompoundButton.OnCheckedChangeListener(){
         public void onCheckedChanged(CompoundButton compoundButton, boolean b){
@@ -107,7 +160,22 @@ public class Settings extends AppCompatActivity {
         switchDarkMode.setOnCheckedChangeListener(switchDarkModeListener);
         //setting switchEnterSave to listener to "switchEnterSaveListener"
         switchEnterSave.setOnClickListener(switchEnterSaveListener);
+
+
+
+
+
+
+
     }
+
+    //set Invisibility of size button`s
+    public void setInvisibilityTextSizeButton(){
+        buttonSmallTextSize.setVisibility(View.INVISIBLE);
+        buttonMediumTextSize.setVisibility(View.INVISIBLE);
+        buttonLargeTextSize.setVisibility(View.INVISIBLE);
+    }
+
 }
 
 
