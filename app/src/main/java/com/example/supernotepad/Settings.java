@@ -2,6 +2,8 @@ package com.example.supernotepad;
 
 //import class
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +21,8 @@ public class Settings extends AppCompatActivity {
     TextView settingsTitle;
     TextView textViewSortBy;
     TextView textViewTextSize;
+
+    boolean isNightMode=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +76,17 @@ public class Settings extends AppCompatActivity {
         View.OnClickListener switchDarkModeListener = new View.OnClickListener(){
             public void onClick(View V){
                 //implementation
+
+                    if(!isNightMode)
+                    {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    }
+                    else
+                    {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    }
+                isNightMode=!isNightMode;
+
             }
         };
         //create click listener for switchEnterSave
@@ -93,6 +108,7 @@ public class Settings extends AppCompatActivity {
         switchEnterSave.setOnClickListener(switchEnterSaveListener);
     }
 }
+
 
 
 

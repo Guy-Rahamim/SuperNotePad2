@@ -2,7 +2,13 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="noteTextColor">#CACACA</color>
-    <color name="background">#2E2D2D</color>
+    <color name="colorAccent">#42B6AB</color>
+
+
+
+    <color name="noteTextColor">#130E0E</color>
+    <color name="background">#FFFFFF</color>
+    <color name="buttonBackground">#A3B1B3</color>
+    <color name="buttonChoice">#D3DDDD</color>
+
 </resources>
