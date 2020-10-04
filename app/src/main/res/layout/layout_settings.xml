@@ -20,12 +20,11 @@
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch_darkMode"
-        android:layout_width="380dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="252dp"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
 
+
+        android:layout_marginTop="136dp"
         android:bufferType="normal"
         android:buttonTint="#272323"
         android:text="@string/settings_toggle_dark_mode"
@@ -53,16 +52,14 @@
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch_enterSave"
-        android:layout_width="381dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="212dp"
-        android:layout_marginEnd="244dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="88dp"
         android:text="@string/settings_enter_is_save"
         android:textColor="@color/noteTextColor"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,8 +67,8 @@
         android:id="@+id/textView_sortBy"
         android:layout_width="94dp"
         android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="208dp"
         android:gravity="fill"
         android:text="@string/settings_sort_by"
         android:textColor="@color/noteTextColor"
@@ -79,25 +76,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_sortByChoice"
-        android:layout_width="122dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="284dp"
-        android:background="@color/buttonChoice"
-        android:text="@string/settings_button_choice"
-        android:textColor="@color/noteTextColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView_textSize"
         android:layout_width="94dp"
         android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="352dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="276dp"
         android:gravity="fill"
         android:text="@string/settings_text_size"
         android:textColor="@color/noteTextColor"
@@ -109,11 +93,25 @@
         android:id="@+id/button_textSizeChoice"
         android:layout_width="122dp"
         android:layout_height="43dp"
-        android:layout_marginStart="276dp"
-        android:layout_marginBottom="336dp"
+        android:layout_marginStart="264dp"
+        android:layout_marginBottom="412dp"
         android:background="@color/buttonChoice"
         android:text="@string/settings_button_choice"
         android:textColor="@color/noteTextColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_sortByChoice"
+        android:layout_width="122dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="208dp"
+        android:background="@color/buttonChoice"
+        android:text="@string/settings_button_choice"
+        android:textColor="@color/noteTextColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.915"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
