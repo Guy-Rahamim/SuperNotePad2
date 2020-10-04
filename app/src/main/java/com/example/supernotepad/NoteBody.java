@@ -20,6 +20,7 @@ import java.io.IOException;
 //NoteBode class
 public class NoteBody extends AppCompatActivity {
 
+    public static int textSize = 25;
     //Statement of variables
     Button backButton;
     SwitchCompat toggleCheckbox;

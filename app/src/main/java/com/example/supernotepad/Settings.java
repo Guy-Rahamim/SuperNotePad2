@@ -25,6 +25,8 @@ public class Settings extends AppCompatActivity {
 
     boolean isNightMode=false;
 
+    int smallSize = 10, mediumSize = 20, largeSize = 30;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,12 @@ public class Settings extends AppCompatActivity {
 
         //initializing click listener
         initClickListeners();
+
+
+
+
+
+
     }
 
     //initializing click listeners
@@ -107,6 +115,13 @@ public class Settings extends AppCompatActivity {
         switchDarkMode.setOnClickListener(switchDarkModeListener);
         //setting switchEnterSave to listener to "switchEnterSaveListener"
         switchEnterSave.setOnClickListener(switchEnterSaveListener);
+
+
+        //---------
+
+
+
+
     }
 }
 
