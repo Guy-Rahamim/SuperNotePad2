@@ -12,9 +12,10 @@
         android:id="@+id/main_button_add_note"
         android:layout_width="57dp"
         android:layout_height="55dp"
+        android:textColorHint="@color/noteTextColor"
+
         android:background="@drawable/circle_button"
         android:text="+"
-        android:textColor="@android:color/white"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +27,6 @@
     <ImageButton
 
         android:id="@+id/main_button_search_open"
-
         android:layout_width="57dp"
         android:layout_height="55dp"
         android:background="@drawable/circle_button"
@@ -42,7 +42,6 @@
     <ImageButton
 
         android:id="@+id/main_button_tools"
-
         android:background="@drawable/circle_button"
         android:layout_width="57dp"
         android:layout_height="55dp"
@@ -59,7 +58,7 @@
         android:id="@+id/main_view_linearLayout"
         android:layout_width="match_parent"
         android:layout_height="553dp"
-        android:background="#545252"
+        android:background="@color/background"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,12 +79,14 @@
 
         android:id="@+id/main_button_search"
         android:layout_width="203dp"
+        android:gravity="fill"
         android:layout_height="45dp"
         android:completionThreshold="1"
         android:hint="@string/main_search_bar"
         android:textColor="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
-        android:textColorHint="#F8F8F8"
+        android:backgroundTint="@color/buttonChoice"
+        android:textColorHint="@color/noteTextColor"
+        android:background="@color/buttonBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
