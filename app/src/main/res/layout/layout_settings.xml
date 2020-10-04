@@ -132,36 +132,27 @@
         app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.511" />
+        app:layout_constraintVertical_bias="0.511" /><![CDATA[
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/button_sortByChoice"
-        android:layout_width="122dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="208dp"
-        android:background="@color/buttonChoice"
-        android:text="@string/settings_button_choice"
-        android:textColor="@color/noteTextColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+
+    ]]>
 
     <Button
-        android:id="@+id/button_smallSize"
+        android:id="@+id/button_textSmallSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.518" />
+        app:layout_constraintVertical_bias="0.622" />
 
     <Button
-        android:id="@+id/button_mediumSize"
+        android:id="@+id/button_textMediumSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="medium"
@@ -170,18 +161,18 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.518" />
+        app:layout_constraintVertical_bias="0.622" />
 
     <Button
-        android:id="@+id/button_largeSize"
+        android:id="@+id/button_textLargeSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.518" />
+        app:layout_constraintVertical_bias="0.622" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
