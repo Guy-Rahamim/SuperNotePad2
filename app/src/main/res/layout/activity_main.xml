@@ -27,7 +27,6 @@
     <ImageButton
 
         android:id="@+id/main_button_search_open"
-
         android:layout_width="57dp"
         android:layout_height="55dp"
         android:background="@drawable/circle_button"

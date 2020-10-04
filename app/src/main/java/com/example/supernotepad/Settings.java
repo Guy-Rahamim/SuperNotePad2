@@ -3,6 +3,7 @@ package com.example.supernotepad;
 //import class
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 
 import android.os.Bundle;
 import android.view.View;
@@ -16,8 +17,8 @@ public class Settings extends AppCompatActivity {
     Button buttonBack;
     Button buttonSortByChoice;
     Button buttonTextSizeChoice;
-    Switch switchDarkMode;
-    Switch switchEnterSave;
+    SwitchCompat switchDarkMode;
+    SwitchCompat switchEnterSave;
     TextView settingsTitle;
     TextView textViewSortBy;
     TextView textViewTextSize;
@@ -40,8 +41,8 @@ public class Settings extends AppCompatActivity {
         buttonTextSizeChoice = (Button) findViewById(R.id.button_textSizeChoice);
 
         //switch initialization.
-        switchDarkMode = (Switch) findViewById(R.id.switch_darkMode);
-        switchEnterSave = (Switch) findViewById(R.id.switch_enterSave);
+        switchDarkMode = (SwitchCompat) findViewById(R.id.switch_darkMode);
+        switchEnterSave = (SwitchCompat) findViewById(R.id.switch_enterSave);
 
         //text view initialization.
         settingsTitle = (TextView) findViewById(R.id.textView_settings_title);

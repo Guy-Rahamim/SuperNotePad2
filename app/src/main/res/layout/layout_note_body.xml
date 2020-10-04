@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
-
     <EditText
         android:id="@+id/layout_note_body"
         android:layout_width="411dp"
@@ -38,15 +37,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="108dp"
         android:background="@color/noteTextColor"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintVertical_bias="0.149"
+        tools:layout_editor_absoluteX="-16dp" />
 
     <Button
         android:id="@+id/button_back"
@@ -58,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch_toggle_checkbox"
         android:layout_width="0dp"
         android:layout_height="61dp"
@@ -67,10 +66,8 @@
         android:layout_marginBottom="28dp"
         android:text="@string/body_check_box"
         android:textColor="@color/noteTextColor"
-
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

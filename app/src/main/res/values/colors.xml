@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    //Basic colors
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#42B6AB</color>
 
-
-
+    //Additional colors for the light
     <color name="noteTextColor">#130E0E</color>
     <color name="background">#FFFFFF</color>
     <color name="buttonBackground">#A3B1B3</color>
