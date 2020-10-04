@@ -8,6 +8,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 //setting class
@@ -73,23 +74,22 @@ public class Settings extends AppCompatActivity {
             public void onClick(View V){//implementation
             }
         };
-        //create click listener for switchDarkMode
-        View.OnClickListener switchDarkModeListener = new View.OnClickListener(){
-            public void onClick(View V){
-                //implementation
+        //create Checked Change listener for switchDarkMode
+    CompoundButton.OnCheckedChangeListener switchDarkModeListener = new CompoundButton.OnCheckedChangeListener(){
+        public void onCheckedChanged(CompoundButton compoundButton, boolean b){
+        //implementation
 
-                    if(!isNightMode)
-                    {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    }
-                    else
-                    {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    }
-                isNightMode=!isNightMode;
+            //Checked if Change switch
+         if(b){
+              AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+         }
+         else
+         {
+             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+         }
+    }
+};
 
-            }
-        };
         //create click listener for switchEnterSave
         View.OnClickListener switchEnterSaveListener = new View.OnClickListener(){
             public void onClick(View V){
@@ -104,7 +104,7 @@ public class Settings extends AppCompatActivity {
         //setting buttonTextSizeChoice to listen to "buttonTextSizeChoiceListener".
         buttonTextSizeChoice.setOnClickListener(buttonTextSizeChoiceListener);
         //setting switchDarkMode to listen to "switchDarkModeListener"
-        switchDarkMode.setOnClickListener(switchDarkModeListener);
+        switchDarkMode.setOnCheckedChangeListener(switchDarkModeListener);
         //setting switchEnterSave to listener to "switchEnterSaveListener"
         switchEnterSave.setOnClickListener(switchEnterSaveListener);
     }

@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:layoutDirection="ltr">
 
     <Button
         android:id="@+id/main_button_add_note"
         android:layout_width="57dp"
         android:layout_height="55dp"
-        android:textColorHint="@color/noteTextColor"
-
+        android:textColor="@color/noteTextColor"
         android:background="@drawable/circle_button"
         android:text="+"
         android:textSize="20dp"
@@ -51,7 +51,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="@android:drawable/ic_menu_preferences" />
+        app:srcCompat="@android:drawable/ic_menu_preferences"
+        android:layoutDirection="ltr"/>
 
     <LinearLayout
 
@@ -78,7 +79,6 @@
         android:textColor="#FFFFFF"
         android:backgroundTint="@color/buttonChoice"
         android:textColorHint="@color/noteTextColor"
-        android:background="@color/buttonBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
