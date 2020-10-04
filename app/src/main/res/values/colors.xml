@@ -8,7 +8,7 @@
     //Additional colors for the light
     <color name="noteTextColor">#130E0E</color>
     <color name="background">#FFFFFF</color>
-    <color name="buttonBackground">#A3B1B3</color>
-    <color name="buttonChoice">#D3DDDD</color>
+    <color name="buttonBackground">#C2CFD1</color>
+    <color name="buttonChoice">#B4BEBF</color>
 
 </resources>
