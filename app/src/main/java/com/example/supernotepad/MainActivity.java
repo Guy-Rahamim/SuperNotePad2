@@ -2,9 +2,10 @@ package com.example.supernotepad;
 //import class
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.Manifest;
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,6 +26,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
@@ -33,15 +35,22 @@ import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
+import static com.example.supernotepad.NoteBody.textSize;
+
 @RuntimePermissions
 public class MainActivity extends AppCompatActivity
     {
         //Statement of variables
-        public static HashMap<String, String> map= new HashMap<String,String>();
+        public static HashMap<String, String> map = new HashMap<String,String>();
+        public static HashMap<Integer, File> filesMap = new HashMap<Integer,File>();
+        public LinkedList<File> fileList;
         ImageButton mainButtonTools;
         ImageButton mainButtonSearchOpen;
         Button mainButtonAddNote;
         AutoCompleteTextView mainButtonSearch;
+        TextView newText;
+        LinearLayout linLayout;
+        ConstraintLayout constraint;
 
         TextView noteView;
 
@@ -50,19 +59,20 @@ public class MainActivity extends AppCompatActivity
             {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_main);
+
+                getSupportActionBar().hide();
+
                 initElements();//initializing elements
 
-                //testing for note view
-                noteView = (TextView) findViewById(R.id.main_note_view);
-                noteView.setVisibility(View.INVISIBLE);
-                instantiateMap();
-                displayMap();
+                populateMap();
+               displayMap();
 
             }
 
         //Initialization an object of action
         public void initElements()
             {
+                fileList= new LinkedList<File>();
 
                 //imageButton initialization.
                 mainButtonTools = (ImageButton) findViewById(R.id.main_button_tools);
@@ -74,6 +84,15 @@ public class MainActivity extends AppCompatActivity
                 //AutoCompleteTextView initialization.
                 mainButtonSearch = (AutoCompleteTextView) findViewById(R.id.main_button_search);
 
+                //LinearLayout initialization
+                constraint = (ConstraintLayout) findViewById(R.id.main_activity_constraint_layout);
+
+
+                linLayout=  (LinearLayout) findViewById(R.id.main_view_linearLayout);
+               // linLayout.setOrientation(LinearLayout.VERTICAL);
+
+
+
                 initClickListeners();//initializing Click Listeners
             }
 
@@ -84,8 +103,7 @@ public class MainActivity extends AppCompatActivity
                 //create click listener for mainButtonTools
                 View.OnClickListener mainButtonToolsListener = new View.OnClickListener()
                     {
-                        public void onClick(View V)
-                            { //implementation}
+                        public void onClick(View V) {
                                 launchActivitySettings();//launch Activity Settings
                             }
                     };
@@ -93,19 +111,15 @@ public class MainActivity extends AppCompatActivity
                 //create click listener for mainButtonSearchOpen
                 View.OnClickListener mainButtonSearchOpenListener = new View.OnClickListener()
                     {
-                        public void onClick(View V)
-                            {//implementation
+                        public void onClick(View V) {
                             }
                     };
 
                 //create click listener for mainButtonAddNote
                 View.OnClickListener mainButtonAddNoteListener = new View.OnClickListener() {
-                        public void onClick(View V)
-                            {
-                                //implementation
-                                // launchActivityNoteBody();
-                                MainActivityPermissionsDispatcher.launchActivityNoteBodyWithPermissionCheck(MainActivity.this);
-                            }
+                        public void onClick(View V) {
+                         MainActivityPermissionsDispatcher.launchActivityNoteBodyWithPermissionCheck(MainActivity.this);
+                        }
                     };
 
 
@@ -117,79 +131,74 @@ public class MainActivity extends AppCompatActivity
                 mainButtonAddNote.setOnClickListener(mainButtonAddNoteListener);
             }
 
-
-        //launch Activity Note Body
-        // private void launchActivityNoteBody() {
-
         //Called only if permission is given.
-
         @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        public void launchActivityNoteBody()
-            {
-
+        public void launchActivityNoteBody() {
                 Intent intentNoteBody = new Intent(this, NoteBody.class);
                 startActivity(intentNoteBody);
             }
 
-        private void launchActivitySettings()
-            {
+        private void launchActivitySettings() {
                 Intent intentSettings = new Intent(this, Settings.class);
                 startActivity(intentSettings);
             }
-        
-        private   void instantiateMap()
+
+        public void populateMap()
             {
-                //instantiate files, check if its a directory
-                //if it is, create a file array and instantiate it.
+                File[] files= null;
+                //Instantiate a new file and set its path
+                //to the files directory.
+                File dir= getFilesDir();
 
-                //create a FileInputStream.
-                // instantiate a new InputStreamReader with the FileInputStream.
-                //instantiate a new BufferedReader with the InputStreamReader.
-                FileInputStream fileReader= null;
-                InputStreamReader streamReader=null;
-                BufferedReader bufferedReader = null;
+                //if file is a directory,
+                //create a file array and instantiate it using File.listFiles().
+                if (dir.isDirectory()) {
+                        files= dir.listFiles();
 
-                File dir = getFilesDir();
-
-                if (dir.isDirectory()){
-                    String noteBody="";
-                    String currentLine="";
-
-                    try{
-                        File[] files= dir.listFiles();
-
-                        for (File file:files){
-                            fileReader= new FileInputStream(file);
-                            streamReader = new InputStreamReader(fileReader);
-                            bufferedReader = new BufferedReader(streamReader);
-
-                            while ((currentLine = bufferedReader.readLine()) !=null){
-                                noteBody+=currentLine+"\n";
+                        //iterate over files and add them
+                        //all to an array list.
+                        for (File file: files) {
+                                fileList.add(file);
                             }
-
-                            map.put(file.getName(),noteBody);
-                        }
                     }
-
-                    catch(IOException e){
-                        Toast.makeText(this, "IO caught in instantiate", Toast.LENGTH_SHORT).show();
-                    }
-
-
-                }
-
-
             }
 
-        public void displayMap(){
-            if (!map.isEmpty()) {
-                    String text = map.get("hello");
-                    noteView.setVisibility(View.VISIBLE);
-                    noteView.setTextColor(Color.BLACK);
-                    noteView.setText(text);
-                }
 
+        public void displayMap()
+            {
+                TextView tv;
+                int currentColor =ResourcesCompat.getColor(getResources(),R.color.noteTextColor,null);
+
+                //instantiate text view.
+                //set text view layout params to match parent,wrap content
+                //set the text view text.
+                //set other attributes.
+                //add text view to linear layout.
+
+                //remove all views that exists currently on linLayout.
+                linLayout.removeAllViews();
+
+                //Instantiate TextView Params.
+                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
+                                           ViewGroup.LayoutParams.MATCH_PARENT,
+                                          ViewGroup.LayoutParams.WRAP_CONTENT );
+
+                        //iterate through file list, instantiate a new
+                        //text view, set its params and add it to linLayout
+                        for (File file : fileList)
+                            {
+                                tv= new TextView(this);
+
+                                tv.setLayoutParams(params);
+                                tv.setTextSize(NoteBody.textSize);
+                               tv.setTextColor(currentColor);
+                                tv.setText(file.getName());
+
+                                linLayout.addView(tv);
+                    }
             }
+
+
 
         //******************Handaling Storage Permission*****************//
 
@@ -200,8 +209,7 @@ public class MainActivity extends AppCompatActivity
 
         //on rationale
         @OnShowRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        void showRationaleForStorage(final PermissionRequest request)
-            {
+        void showRationaleForStorage(final PermissionRequest request) {
 
                 //Instantiating buttons for the alert dialog.
                 DialogInterface.OnClickListener onOK = new DialogInterface.OnClickListener()
@@ -237,8 +245,7 @@ public class MainActivity extends AppCompatActivity
 
         //on denied
         @OnPermissionDenied(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        void onPermissionDenied()
-            {
+        void onPermissionDenied() {
                 AlertDialog.Builder deniedDialog = new AlertDialog.Builder(this);
                 deniedDialog
                         .setTitle("Permission Required")
@@ -247,19 +254,49 @@ public class MainActivity extends AppCompatActivity
             }
 
         @OnNeverAskAgain(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        void onNeverAskAgain()
-            {
+        void onNeverAskAgain() {
                 Toast.makeText(this, "Never asked again", Toast.LENGTH_SHORT).show();
             }
 
         @Override
-        public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
-            {
+        public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
                 MainActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
             }
 
+        //Deprecated
+        private   void instantiateMap() {
 
+            //************OLD VERSION**************//
+            FileInputStream fileReader= null;
+            InputStreamReader streamReader=null;
+            BufferedReader bufferedReader = null;
 
+            File dir = getFilesDir();
 
+            if (dir.isDirectory()){
+                String noteBody="";
+                String currentLine="";
+
+                try{
+                    File[] files= dir.listFiles();
+
+                    for (File file:files){
+                        fileReader= new FileInputStream(file);
+                        streamReader = new InputStreamReader(fileReader);
+                        bufferedReader = new BufferedReader(streamReader);
+
+                        while ((currentLine = bufferedReader.readLine()) !=null){
+                            noteBody+=currentLine+"\n";
+                        }
+
+                        map.put(file.getName(),noteBody);
+                    }
+                }
+
+                catch(IOException e){
+                    Toast.makeText(this, "IO caught in instantiate", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
     }

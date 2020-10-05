@@ -59,7 +59,7 @@
 
         android:id="@+id/main_view_linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="553dp"
+        android:layout_height="524dp"
         android:background="@color/background"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -67,15 +67,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-        <TextView
-            android:id="@+id/main_note_view"
-            android:layout_width="match_parent"
-            android:layout_height="119dp"
-            android:background="@android:color/white"
-            android:text="TextView" />
-    </LinearLayout>
+        app:layout_constraintVertical_bias="1.0" />
 
     <AutoCompleteTextView
 

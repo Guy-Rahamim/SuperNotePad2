@@ -13,9 +13,13 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 //NoteBode class
 public class NoteBody extends AppCompatActivity {
@@ -130,6 +134,19 @@ public class NoteBody extends AppCompatActivity {
             }
         }//end finally
     }//end saveNote function
+
+    public static void loadNote(File note){
+        //set file name to title.
+
+        //read file using objects and the text
+        //to the note body.
+
+        //Declare all members of the map population.
+        FileInputStream fis=null;
+        InputStreamReader isr= null;
+        BufferedReader br= null;
+
+        }
 
     public void setNoteBodySize(){
         noteBody.setTextSize(textSize);

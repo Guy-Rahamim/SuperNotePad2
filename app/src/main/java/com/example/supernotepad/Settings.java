@@ -20,14 +20,13 @@ public class Settings extends AppCompatActivity {
     Button buttonSmallTextSize;
     Button buttonMediumTextSize;
     Button buttonLargeTextSize;
+
     SwitchCompat switchDarkMode;
     SwitchCompat switchEnterSave;
+
     TextView settingsTitle;
     TextView textViewSortBy;
     TextView textViewTextSize;
-
-    boolean isNightMode=false;
-
 
     // define size for Text in NoteBody
     int smallSize = 10, mediumSize = 20, largeSize = 30;
@@ -128,16 +127,16 @@ public class Settings extends AppCompatActivity {
 
 
         //create Checked Change listener for switchDarkMode
-    CompoundButton.OnCheckedChangeListener switchDarkModeListener = new CompoundButton.OnCheckedChangeListener(){
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b){
+    CompoundButton.OnCheckedChangeListener switchDarkModeListener = new CompoundButton.OnCheckedChangeListener()
+        {
+        public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked){
         //implementation
 
             //Checked if Change switch
-         if(b){
+         if(isChecked){
               AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
          }
-         else
-         {
+         else {
              AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
          }
     }
