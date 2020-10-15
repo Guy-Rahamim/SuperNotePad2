@@ -2,14 +2,12 @@ package com.example.supernotepad;
 //import class
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 import permissions.dispatcher.NeedsPermission;
@@ -35,24 +28,17 @@ import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
-import static com.example.supernotepad.NoteBody.textSize;
-
 @RuntimePermissions
 public class MainActivity extends AppCompatActivity
     {
         //Statement of variables
-        public static HashMap<String, String> map = new HashMap<String,String>();
-        public static HashMap<Integer, File> filesMap = new HashMap<Integer,File>();
         public LinkedList<File> fileList;
         ImageButton mainButtonTools;
         ImageButton mainButtonSearchOpen;
         Button mainButtonAddNote;
         AutoCompleteTextView mainButtonSearch;
-        TextView newText;
         LinearLayout linLayout;
-        ConstraintLayout constraint;
 
-        TextView noteView;
 
         @Override
         protected void onCreate(Bundle savedInstanceState)
@@ -64,8 +50,8 @@ public class MainActivity extends AppCompatActivity
 
                 initElements();//initializing elements
 
-                populateMap();
-               displayMap();
+                populateList();
+               displayList();
 
             }
 
@@ -85,9 +71,6 @@ public class MainActivity extends AppCompatActivity
                 mainButtonSearch = (AutoCompleteTextView) findViewById(R.id.main_button_search);
 
                 //LinearLayout initialization
-                constraint = (ConstraintLayout) findViewById(R.id.main_activity_constraint_layout);
-
-
                 linLayout=  (LinearLayout) findViewById(R.id.main_view_linearLayout);
                // linLayout.setOrientation(LinearLayout.VERTICAL);
 
@@ -143,8 +126,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intentSettings);
             }
 
-        public void populateMap()
-            {
+        public void populateList() {
                 File[] files= null;
                 //Instantiate a new file and set its path
                 //to the files directory.
@@ -163,11 +145,9 @@ public class MainActivity extends AppCompatActivity
                     }
             }
 
-
-        public void displayMap()
-            {
+        public void displayList() {
                 TextView tv;
-                int currentColor =ResourcesCompat.getColor(getResources(),R.color.noteTextColor,null);
+                int currentColor =ResourcesCompat.getColor(getResources(),R.color.noteTextColor, null);
 
                 //instantiate text view.
                 //set text view layout params to match parent,wrap content
@@ -185,19 +165,29 @@ public class MainActivity extends AppCompatActivity
 
                         //iterate through file list, instantiate a new
                         //text view, set its params and add it to linLayout
-                        for (File file : fileList)
+                        for (final File file : fileList) {
+                                final Note note = new Note(this,file);
+                                note.setButtonAttributes(currentColor,file.getName());
+
+                        //*******************FIND A BETTER LOCATION FOR CLICK LISTENER*****************//
+                            note.button.setOnClickListener(new View.OnClickListener()
+                    {
+                        public void onClick(View v)
                             {
-                                tv= new TextView(this);
+                                NoteBody.loadedNote =note;
+                                moveToNoteBody();
+                        //*******************FIND A BETTER LOCATION FOR CLICK LISTENER*****************//
+                            }
+                    });
 
-                                tv.setLayoutParams(params);
-                                tv.setTextSize(NoteBody.textSize);
-                               tv.setTextColor(currentColor);
-                                tv.setText(file.getName());
-
-                                linLayout.addView(tv);
-                    }
+                        linLayout.addView(note.button);
+                        }
             }
 
+        void moveToNoteBody() {
+                Intent intent = new Intent(this,NoteBody.class);
+                startActivity(intent);
+            }
 
 
         //******************Handaling Storage Permission*****************//
@@ -264,39 +254,4 @@ public class MainActivity extends AppCompatActivity
                 MainActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
             }
 
-        //Deprecated
-        private   void instantiateMap() {
-
-            //************OLD VERSION**************//
-            FileInputStream fileReader= null;
-            InputStreamReader streamReader=null;
-            BufferedReader bufferedReader = null;
-
-            File dir = getFilesDir();
-
-            if (dir.isDirectory()){
-                String noteBody="";
-                String currentLine="";
-
-                try{
-                    File[] files= dir.listFiles();
-
-                    for (File file:files){
-                        fileReader= new FileInputStream(file);
-                        streamReader = new InputStreamReader(fileReader);
-                        bufferedReader = new BufferedReader(streamReader);
-
-                        while ((currentLine = bufferedReader.readLine()) !=null){
-                            noteBody+=currentLine+"\n";
-                        }
-
-                        map.put(file.getName(),noteBody);
-                    }
-                }
-
-                catch(IOException e){
-                    Toast.makeText(this, "IO caught in instantiate", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
     }
