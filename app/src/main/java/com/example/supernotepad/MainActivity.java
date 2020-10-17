@@ -15,6 +15,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity
         Button mainButtonAddNote;
         AutoCompleteTextView mainButtonSearch;
         LinearLayout linLayout;
+        ScrollView scrollLayout;
 
 
         @Override
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity
 
                 //AutoCompleteTextView initialization.
                 mainButtonSearch = (AutoCompleteTextView) findViewById(R.id.main_button_search);
+
 
                 //LinearLayout initialization
                 linLayout=  (LinearLayout) findViewById(R.id.main_view_linearLayout);
@@ -119,6 +122,7 @@ public class MainActivity extends AppCompatActivity
         public void launchActivityNoteBody() {
                 Intent intentNoteBody = new Intent(this, NoteBody.class);
                 startActivity(intentNoteBody);
+                finish();
             }
 
         private void launchActivitySettings() {
@@ -187,6 +191,7 @@ public class MainActivity extends AppCompatActivity
         void moveToNoteBody() {
                 Intent intent = new Intent(this,NoteBody.class);
                 startActivity(intent);
+                finish();
             }
 
 

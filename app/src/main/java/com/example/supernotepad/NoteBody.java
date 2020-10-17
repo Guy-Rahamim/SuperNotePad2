@@ -63,8 +63,9 @@ public class NoteBody extends AppCompatActivity {
         View.OnClickListener backButtonListener = new View.OnClickListener(){
             public void onClick(View V){
           //implementation
-               navigateToMainActivity();
                 loadedNote =null;
+               navigateToMainActivity();
+
             }
         };
         //create click listener for toggleCheckbox
@@ -91,6 +92,18 @@ public class NoteBody extends AppCompatActivity {
         saveButton.setOnClickListener(saveButtonListener);
     }
     //save note function
+
+    public void altSaveNote() {
+                String title=noteTitle.getText().toString();
+                String body = noteBody.getText().toString();
+
+                Note note = new Note();
+                note.saveNote(title,body, this);
+
+                Toast.makeText(this, "saved" ,Toast.LENGTH_SHORT).show();
+
+        }
+
     public void saveNote() {
         //creating filename
         //the getText command brings the text in bytes so we need to add the toString command
@@ -162,6 +175,7 @@ public class NoteBody extends AppCompatActivity {
             {
                 Intent intent =new Intent(NoteBody.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
 
        public void setNoteBodySize(){
@@ -179,7 +193,7 @@ public class NoteBody extends AppCompatActivity {
             {
                 if (loadedNote ==null)
                     return;
-
+                    Toast.makeText(this,loadedNote.body,Toast.LENGTH_SHORT).show();
                 noteTitle.setText(loadedNote.title);
                 noteBody.setText(loadedNote.body);
             }
