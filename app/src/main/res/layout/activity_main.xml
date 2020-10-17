@@ -86,7 +86,7 @@
         android:layout_height="45dp"
         android:completionThreshold="1"
         android:hint="@string/main_search_bar"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/noteTextColor"
         android:backgroundTint="@color/buttonChoice"
         android:textColorHint="@color/noteTextColor"
         app:layout_constraintBottom_toBottomOf="parent"
