@@ -85,7 +85,6 @@ public class Note extends AppCompatActivity
                 button.setTextColor(color);
                 button.setText(name);
 
-
             }
 
         void moveToNoteBody()
