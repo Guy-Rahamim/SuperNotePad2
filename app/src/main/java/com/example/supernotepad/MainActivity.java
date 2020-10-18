@@ -21,10 +21,9 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
@@ -37,7 +36,7 @@ import permissions.dispatcher.RuntimePermissions;
 public class MainActivity extends AppCompatActivity
     {
         //Statement of variables
-        public LinkedList<File> fileList;
+        public ArrayList<File> fileList;
         ImageButton mainButtonTools;
         ImageButton mainButtonSearchOpen;
         Button mainButtonAddNote;
@@ -45,6 +44,8 @@ public class MainActivity extends AppCompatActivity
         LinearLayout linLayout;
         ScrollView scrollLayout;
         File highlightedFile; //Save the file
+
+
 
 
         @Override
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity
         //Initialization an object of action
         public void initElements()
             {
-                fileList= new LinkedList<File>();
+                fileList = new ArrayList<File>();
 
                 //imageButton initialization.
                 mainButtonTools = (ImageButton) findViewById(R.id.main_button_tools);
@@ -99,8 +100,6 @@ public class MainActivity extends AppCompatActivity
                 //LinearLayout initialization
                 linLayout=  (LinearLayout) findViewById(R.id.main_view_linearLayout);
                // linLayout.setOrientation(LinearLayout.VERTICAL);
-
-
 
                 initClickListeners();//initializing Click Listeners
             }
@@ -130,6 +129,11 @@ public class MainActivity extends AppCompatActivity
                          MainActivityPermissionsDispatcher.launchActivityNoteBodyWithPermissionCheck(MainActivity.this);
                         }
                     };
+
+
+
+
+
 
 
                 //setting listener to mainButtonTools to "mainButtonToolsListener"
