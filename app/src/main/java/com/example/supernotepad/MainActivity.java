@@ -6,9 +6,12 @@ import androidx.core.content.res.ResourcesCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
@@ -20,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.LinkedList;
 
 import permissions.dispatcher.NeedsPermission;
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity
         AutoCompleteTextView mainButtonSearch;
         LinearLayout linLayout;
         ScrollView scrollLayout;
+        File highlightedFile; //Save the file
 
 
         @Override
@@ -54,7 +59,25 @@ public class MainActivity extends AppCompatActivity
 
                 populateList();
                displayList();
+            }
 
+            //Create Context Menu
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+            super.onCreateContextMenu(menu, v, menuInfo);
+            getMenuInflater().inflate(R.menu.note_menu ,menu);
+
+            }
+
+            //Context Item Selected
+            public boolean onContextItemSelected(MenuItem item){
+            switch(item.getItemId()){
+                case R.id.delete_note://Option delete selected
+                   deleteFile(highlightedFile);
+                    Toast.makeText(this, "deleted " + highlightedFile.getName(), Toast.LENGTH_SHORT).show();
+                   return true;
+                default:
+                    return super.onContextItemSelected(item);
+            }
             }
 
         //Initialization an object of action
@@ -131,6 +154,7 @@ public class MainActivity extends AppCompatActivity
             }
 
         public void populateList() {
+                fileList.clear();
                 File[] files= null;
                 //Instantiate a new file and set its path
                 //to the files directory.
@@ -171,7 +195,7 @@ public class MainActivity extends AppCompatActivity
                         //text view, set its params and add it to linLayout
                         for (final File file : fileList) {
                                 final Note note = new Note(this,file);
-                                note.setButtonAttributes(currentColor,file.getName());
+                                note.setButtonAttributes(currentColor ,file.getName());
 
                         //*******************FIND A BETTER LOCATION FOR CLICK LISTENER*****************//
                             note.button.setOnClickListener(new View.OnClickListener()
@@ -184,8 +208,25 @@ public class MainActivity extends AppCompatActivity
                             }
                     });
 
+                            //Long Click Listener
+                            note.button.setOnLongClickListener(new View.OnLongClickListener()
+                            {
+                                @Override
+                               public boolean onLongClick(View v) {
+                                    //Link to the floating menu
+                                    registerForContextMenu(note.button);
+                                    highlightedFile = file;//Save the file
+                                    return false;
+                               }
+                            });
+
                         linLayout.addView(note.button);
                         }
+            }
+
+            void callRegisterForContextMenu(Button button, File file) {
+
+
             }
 
         void moveToNoteBody() {
@@ -257,6 +298,23 @@ public class MainActivity extends AppCompatActivity
         public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
                 MainActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+            }
+
+            //delete file
+            public void deleteFile(File file){
+
+            if(file.delete()){//delete
+                populateList();//Updates a list in memory
+                displayList();//Updates list in view
+
+            }
+            else
+            {//There is an error
+                Toast toast= new Toast(this);
+                toast.makeText(this,"There is an error, Contact the developer",Toast.LENGTH_SHORT);
+                toast.show();
+            }
+
             }
 
     }

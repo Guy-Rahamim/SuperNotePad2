@@ -39,6 +39,7 @@ public class Note extends AppCompatActivity
         String body;
         Context context;
 
+
         //******MAKE THIS CONSTRUCTOR OBSOLETE************//
         public Note(Context context, File file) {
                 this.button= new Button(context);
