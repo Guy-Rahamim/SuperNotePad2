@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -32,6 +33,8 @@ import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
+
+
 @RuntimePermissions
 public class MainActivity extends AppCompatActivity
     {
@@ -43,17 +46,18 @@ public class MainActivity extends AppCompatActivity
         AutoCompleteTextView mainButtonSearch;
         LinearLayout linLayout;
         ScrollView scrollLayout;
+
+       public static SharedPreferences sharedPreferences;
+        public static final String textSizeKey = "TEXT_SIZE";
+
         File highlightedFile; //Save the file
-
-
-
 
         @Override
         protected void onCreate(Bundle savedInstanceState)
             {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_main);
-
+                sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);//create or reload the setting file.
                 getSupportActionBar().hide();
 
                 initElements();//initializing elements
