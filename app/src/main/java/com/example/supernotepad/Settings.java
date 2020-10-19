@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -102,7 +103,10 @@ public class Settings extends AppCompatActivity {
         buttonSmallTextSize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NoteBody.textSize = smallSize;
+                SharedPreferences.Editor editor= MainActivity.sharedPreferences.edit();
+                editor.putInt(MainActivity.textSizeKey,smallSize); // update the user text size choice
+                editor.apply();//save changes
+                NoteBody.textSize= MainActivity.sharedPreferences.getInt(MainActivity.textSizeKey,25);//load user choice
                 setInvisibilityTextSizeButton();
             }
         });
@@ -111,7 +115,10 @@ public class Settings extends AppCompatActivity {
         buttonMediumTextSize.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                NoteBody.textSize = mediumSize;
+                SharedPreferences.Editor editor= MainActivity.sharedPreferences.edit();
+                editor.putInt(MainActivity.textSizeKey,mediumSize);
+                editor.apply();
+                NoteBody.textSize= MainActivity.sharedPreferences.getInt(MainActivity.textSizeKey,25);
                 setInvisibilityTextSizeButton();
             }
         });
@@ -120,9 +127,13 @@ public class Settings extends AppCompatActivity {
         buttonLargeTextSize.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                NoteBody.textSize = largeSize;
+                SharedPreferences.Editor editor= MainActivity.sharedPreferences.edit();
+                editor.putInt(MainActivity.textSizeKey,largeSize);
+                editor.apply();
+                NoteBody.textSize= MainActivity.sharedPreferences.getInt(MainActivity.textSizeKey,25);
                 setInvisibilityTextSizeButton();
-            }
+        }
+
         });
 
 

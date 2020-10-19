@@ -22,7 +22,7 @@ public class NoteBody extends AppCompatActivity {
 
     public static File currentFile;
     public static Note loadedNote;
-    public static int textSize = 25;
+   public static int textSize=MainActivity.sharedPreferences.getInt( MainActivity.textSizeKey,25);
     //Statement of variables
     Button backButton;
     SwitchCompat toggleCheckbox;
@@ -153,6 +153,7 @@ public class NoteBody extends AppCompatActivity {
                     //to close the current file
                     currentFile.close();
                 } catch (IOException e) {
+                    Toast.makeText(this,"IO!", Toast.LENGTH_SHORT);
                     e.printStackTrace();
                 }
             }
@@ -179,7 +180,7 @@ public class NoteBody extends AppCompatActivity {
             }
 
        public void setNoteBodySize(){
-        noteBody.setTextSize(textSize);
+        noteBody.setTextSize(MainActivity.sharedPreferences.getInt(MainActivity.textSizeKey,25));//load the last user choice or the default text size
     }
 
         @Override

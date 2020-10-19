@@ -1,5 +1,6 @@
 package com.example.supernotepad;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-public class Note extends AppCompatActivity
+public class Note extends Activity
     {
         // ************** TO DO - REMOVE BUTTON FROM CLASS *****************//
 
