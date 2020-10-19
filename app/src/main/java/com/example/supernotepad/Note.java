@@ -40,6 +40,7 @@ public class Note extends Activity
         String body;
         Context context;
 
+
         //******MAKE THIS CONSTRUCTOR OBSOLETE************//
         public Note(Context context, File file) {
                 this.button= new Button(context);
@@ -85,7 +86,6 @@ public class Note extends Activity
                 button.setTextSize(NoteBody.textSize);
                 button.setTextColor(color);
                 button.setText(name);
-
 
             }
 
