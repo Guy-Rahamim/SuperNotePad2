@@ -7,6 +7,9 @@ import androidx.appcompat.widget.SwitchCompat;
 
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,13 +33,15 @@ public class NoteBody extends AppCompatActivity {
     EditText noteBody;
     Button saveButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_note_body);
         initElements();//initializing elements
         loadNote();
-        setNoteBodySize(); // define the text size of notebody
+        setNoteBodySize(); // define the text size of noteBody
+        
     }
 
     //Initialization an object of action
@@ -57,30 +62,53 @@ public class NoteBody extends AppCompatActivity {
     }
 
     //initializing Click Listeners
-    public void initClickListeners(){
+    public void initClickListeners() {
 
         //create click listener for backButton
-        View.OnClickListener backButtonListener = new View.OnClickListener(){
-            public void onClick(View V){
-          //implementation
-                loadedNote =null;
-               navigateToMainActivity();
+        View.OnClickListener backButtonListener = new View.OnClickListener() {
+            public void onClick(View v) {
+                //implementation
+                loadedNote = null;
+                navigateToMainActivity();
 
             }
         };
         //create click listener for toggleCheckbox
-        View.OnClickListener toggleCheckboxListener = new View.OnClickListener(){
-            public void onClick(View V){
+        View.OnClickListener toggleCheckboxListener = new View.OnClickListener() {
+            public void onClick(View v) {
                 //implementation
             }
         };
         //create click listener for saveButton
-        View.OnClickListener saveButtonListener=new View.OnClickListener(){
-            public void onClick(View V){
+
+        View.OnClickListener saveButtonListener = new View.OnClickListener() {
+            public void onClick(View v) {
                 //calling the saveNote function
                 saveNote();
             }
         };
+
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                saveNote();
+            }
+        };
+
+
+
+        //save add Text Changed Listener
+        noteBody.addTextChangedListener(textWatcher);
 
         //setting listener to backButton to "backButtonListener"
         backButton.setOnClickListener(backButtonListener);
@@ -91,10 +119,10 @@ public class NoteBody extends AppCompatActivity {
         //setting listener to saveButton to "saveButtonListener"
         saveButton.setOnClickListener(saveButtonListener);
     }
-    //save note function
 
+    //save note function
     public void altSaveNote() {
-                String title=noteTitle.getText().toString();
+                String title = noteTitle.getText().toString();
                 String body = noteBody.getText().toString();
 
                 Note note = new Note();

@@ -108,10 +108,12 @@ public class MainActivity extends AppCompatActivity
                 initClickListeners();//initializing Click Listeners
             }
 
+        //public void  (){
+
+       // }
         //initializing Click Listeners
         public void initClickListeners()
             {
-
                 //create click listener for mainButtonTools
                 View.OnClickListener mainButtonToolsListener = new View.OnClickListener()
                     {
@@ -133,10 +135,6 @@ public class MainActivity extends AppCompatActivity
                          MainActivityPermissionsDispatcher.launchActivityNoteBodyWithPermissionCheck(MainActivity.this);
                         }
                     };
-
-
-
-
 
 
 
@@ -233,7 +231,6 @@ public class MainActivity extends AppCompatActivity
             }
 
             void callRegisterForContextMenu(Button button, File file) {
-
 
             }
 
